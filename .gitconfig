@@ -1,0 +1,48 @@
+[color]
+    ui = auto
+
+[color "status"]
+    added = green
+    branch = white bold ul
+    changed = 9    # Bright red
+    unmerged = 11  # Bright yellow
+    untracked = 32 # Brighter blue
+
+[alias]
+    bv = branch -vv
+    co = checkout
+    cob = checkout -b
+    amend = commit --amend
+    aq = commit --amend --no-edit
+    c = commit
+    s = status -sb
+    d = diff --color-word --minimal
+    b = branch
+    pp = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %Creset\t%s %C(bold blue)<%an> %C(yellow)%d%Creset' --abbrev-commit
+    cr = difftool --dir-diff
+    hist = log --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%an]\" --decorate --graph --date=short --all
+    g = grep --break --heading --line-number
+    staged = diff --minimal --staged
+    sub = submodule update --init --recursive
+
+[push]
+    default = simple
+
+[core]
+    editor = vim
+
+[branch]
+    autosetuprebase = always
+
+[pull]
+	rebase = preserve
+
+[log]
+	date = local
+
+[status]
+	submoduleSummary = true
+[branch]
+	autosetuprebase = always
+[grep]
+	lineNumber = true
