@@ -2,8 +2,10 @@
 cd ~/dotfiles
 cat bashrc > ~/.bashrc
 cd
-touch .bashrc_local
-echo "\" Local bashrc file. Edit as you please!" > .bashrc_local
+if [ ! -f .bashrc_local ]; then
+    touch .bashrc_local
+    echo "# Local bashrc file. Edit as you please!" > .bashrc_local
+fi
 
 cd ~/dotfiles
 cat gitconfig > ~/.gitconfig
