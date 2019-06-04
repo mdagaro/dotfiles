@@ -6,3 +6,6 @@ A file called `.bashrc_local` will also be created to allow for localized change
 
 ## gitconfig
 The git config does not currently store my name and username. This note reminds me to update those values.
+
+## vimrc
+The vimrc is a fork from **INSERT NAME HERE** and is thus listed as a submodule. To update the vimrc and the vimrc's submodules, run ```git submodule update --init --recursive```
