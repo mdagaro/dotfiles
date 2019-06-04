@@ -12,4 +12,6 @@ cat gitconfig > ~/.gitconfig
 
 git submodule update --init --recursive
 
+sh ./vim/install_awesome_vimrc.sh
+
 echo "Dotfiles installed"
