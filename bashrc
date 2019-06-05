@@ -129,4 +129,4 @@ git_prompt() {
 }
 
 # Prompt
-PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚\[$c_user\] \h ~\$\[\e[m\] "
+PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚ \[$c_user\]\h \[$c_reset\](\@) \[$c_user\]\$\[\e[m\] "
