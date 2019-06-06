@@ -1,3 +1,4 @@
 [submodule "vim"]
 	path = vim
 	url = https://github.com/mdagaro/vimrc
+    branch = master
