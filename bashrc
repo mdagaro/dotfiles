@@ -130,3 +130,23 @@ git_prompt() {
 
 # Prompt
 PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚ \[$c_user\]\h \[$c_reset\](\@) \[$c_user\]\$\[\e[m\] "
+
+
+up() {
+    local i=$1
+    case i in
+        ''|*[!0-9]*)
+            # Integer
+            if [ -z $1 ]; then
+                cd ..
+            else
+                while [ $i -gt 0 ]; do
+                    cd ..
+                    i=$(($i - 1))
+                done
+            fi
+            ;;
+        *)
+            echo bad
+    esac
+}
