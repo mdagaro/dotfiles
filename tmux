@@ -1,8 +1,8 @@
 # switch panes using Alt-arrow without prefix
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+bind -n M-h select-pane -L
+bind -n M-l select-pane -R
+bind -n M-k select-pane -U
+bind -n M-j select-pane -D
 
 # Enable mouse mode (tmux 2.1 and above)
 set -g mouse on
@@ -50,5 +50,5 @@ set -g message-style 'fg=colour232 bg=colour16 bold'
 set-option -g default-shell /bin/bash
 
 # reload config file
-bind r source-file ~/.tmux.conf
+bind r source ~/.tmux.conf
 
