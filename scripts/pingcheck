@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# != 1 ]; then
+    echo "error"
+    exit 1
+fi
+
+for ((i=1;i<=600;i++));
+do
+    ping -c 1 -W 1 $1 &> /dev/null
+    error=$?
+    if [ $error == 0 ]; then
+        break
+    fi
+    echo "$1 not responding... trying again"
+    sleep 1
+done
+echo "$1 is awake"
+notify-send --urgency=low "$1 is awake" 

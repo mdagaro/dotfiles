@@ -16,3 +16,6 @@ git submodule update --init --recursive
 bash ./vim/install_awesome_vimrc.sh
 
 echo "Dotfiles installed"
+
+cp -r scripts ~/scripts
+echo "Copied scripts"
