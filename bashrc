@@ -34,6 +34,9 @@ alias ll='la -l'
 alias l.='ls -d .*'
 alias bashrc=". .bashrc" # Refresh bashrc
 
+# tvim = tmux vim 
+alias tmvim="vim --servername tmuxEditor --remote"
+
 # Enable base completion in interactive shells
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion

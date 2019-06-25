@@ -1,6 +1,7 @@
 # Install bashrc
 cd ~/dotfiles
 cat bashrc > ~/.bashrc
+cat tmux > ~/.tmux.conf
 cd
 if [ ! -f .bashrc_local ]; then
     touch .bashrc_local
