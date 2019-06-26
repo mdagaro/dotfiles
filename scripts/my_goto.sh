@@ -1,6 +1,9 @@
 #!/bin/bash
 
 FILE="$HOME/scripts/.aliases"
+GOTO_ERROR_CODE=0
+echo $GOTO_ERROR_CODE
+echo "potato"
 
 print_command() {
     printf "    %-10s %-10s\n" "$1" "$2"
@@ -59,11 +62,13 @@ add() {
 delete() {
     if [ -z $1 ] || [ "$1" == "show-all-if-ambiguous" ]; then
         error "no alias name provided. See 'goto delete --help'"
+        GOTO_ERROR_CODE=1
     elif [[ -v "LOCATIONS[$1]" ]]; then
         unset LOCATIONS[$1]
         update
     else
         error "could not find alias '$1'"
+        GOTO_ERROR_CODE=1
     fi
 
 }
@@ -104,6 +109,7 @@ if [ $# -ge 1 ]; then
         print_help
     else
         error "'$1' is not aliased or a goto command. See 'goto --help'"
+        GOTO_ERROR_CODE=1
     fi
 
 fi
@@ -118,3 +124,5 @@ unset -f delete
 unset -f update
 unset -f print_command
 unset FILE
+echo $GOTO_ERROR_CODE
+return $GOTO_ERROR_CODE
