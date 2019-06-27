@@ -1,7 +1,7 @@
 #!/bin/bash
 
 __goto_print_command() {
-    printf "    %-10s %-10s\n" "$1" "$2"
+    printf "    %-15s %-15s\n" "$1" "$2"
 }
 
 __goto_print_short_help() {
@@ -23,15 +23,23 @@ __goto_print_long_help() {
 }
 
 __goto_print_add_help() {
-    echo "add help goes here"
+    echo "usage: goto add [--help] alias"
+    echo ""
+    __goto_print_command "alias" "what to alias the current directory to"
+    __goto_print_command "-h, --help" "display this help message"
 }
 
 __goto_print_delete_help() {
-    echo "delete help goes here"
+    echo "usage: goto delete [--help] <alias>"
+    echo ""
+    __goto_print_command "alias" "the name of the alias to be deleted"
+    __goto_print_command "-h, --help" "display this help message"
 }
 
 __goto_print_list_help() {
-    echo "list help goes here"
+    echo "usage: goto list [--help]"
+    echo ""
+    __goto_print_command "-h, --help" "display this help message"
 }
 
 __goto_help() {
