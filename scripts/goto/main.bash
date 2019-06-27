@@ -20,7 +20,7 @@ __goto_list() {
 __update_autocomplete() {
 
     commands=$( IFS=$' '; echo "${!LOCATIONS[@]}")
-    complete -W "$commands add delete list help" goto
+    complete -W "$commands" goto
     unset commands
 }
 
