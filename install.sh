@@ -17,5 +17,5 @@ bash ./vim/install_awesome_vimrc.sh
 
 echo "Dotfiles installed"
 
-cp -r scripts ~/scripts
+cp -r scripts $HOME
 echo "Copied scripts"
