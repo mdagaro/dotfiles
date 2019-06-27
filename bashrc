@@ -134,7 +134,12 @@ git_prompt() {
 # Prompt
 PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚ \[$c_user\]\h \[$c_reset\](\@) \[$c_user\]\$\[\e[m\] "
 
+# Set up goto auto complete if it exists
+if [ -f $HOME/scripts/goto_complete.bash ]; then
+    . $HOME/scripts/goto_complete.bash
+fi
 
+# Go up 'n' directories
 up() {
     local i=$1
     case i in
@@ -148,6 +153,10 @@ up() {
                     i=$(($i - 1))
                 done
             fi
+            ;;
+        --help)
+            echo "usage: up [n]"
+            echo "Go up 'n' directories. If 'n' is not provided go up a single directory."
             ;;
         *)
             echo bad

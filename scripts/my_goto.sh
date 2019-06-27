@@ -39,6 +39,14 @@ list() {
     done | sort -n -k2
 }
 
+__update_autocomplete() {
+
+    commands=$( IFS=$' '; echo "${!LOCATIONS[@]}")
+    echo "$commands"
+    complete -W "$commands add delete list help" goto
+    unset commands
+}
+
 # Updates the file with the current values in LOCATION
 update() {
     local TEMP=".goto_temp"
@@ -55,6 +63,7 @@ add() {
     else
         LOCATIONS[$1]=$(pwd)
         echo "$1 ${LOCATIONS[$1]}" >> $FILE
+        __update_autocomplete
         echo "${LOCATIONS[$1]} successfully aliased to $1"
     fi
 }
@@ -66,6 +75,7 @@ delete() {
     elif [[ -v "LOCATIONS[$1]" ]]; then
         unset LOCATIONS[$1]
         update
+        __update_autocomplete
     else
         error "could not find alias '$1'"
         GOTO_ERROR_CODE=1
@@ -73,16 +83,6 @@ delete() {
 
 }
 
-# Initialization script
-declare -A LOCATIONS
-if [ ${#LOCATIONS[@]} == 0 ]; then
-    touch $FILE
-    # Read from FILE
-    while IFS= read -r line; do
-        vars=($line)
-        LOCATIONS[${vars[0]}]=${vars[1]}
-    done < $FILE
-fi
 
 if [ $# -ge 1 ]; then
 
