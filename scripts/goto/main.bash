@@ -57,6 +57,8 @@ __goto_delete() {
     if [ -z $1 ] || [ "$1" == "show-all-if-ambiguous" ]; then
         __goto_error "no alias name provided. See 'goto delete --help'"
         GOTO_ERROR_CODE=1
+    elif [ $1 == "--help" ] || [ $1 == "-h" ]; then
+        __goto_help delete
     elif [[ -v "LOCATIONS[$1]" ]]; then
         unset LOCATIONS[$1]
         __goto_update
