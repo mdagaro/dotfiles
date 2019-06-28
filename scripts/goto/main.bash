@@ -7,13 +7,15 @@ __goto_error() {
 }
 
 __goto_list() {
-    if [ $1 == "-h" ] || [ $1 == "--help" ]; then
-        __goto_help list
-    else
+    if [ -z $1 ]; then
         # Print out the aliases sorted by name
         for k in "${!LOCATIONS[@]}"; do
             printf "    %-15s %-15s\n" "$k" "${LOCATIONS[$k]}"
         done | sort -n -k2
+    elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
+        __goto_help list
+    else
+        __goto_error "invalid option $1"
     fi
 }
 
