@@ -14,5 +14,4 @@ if [ ${#LOCATIONS[@]} == 0 ]; then
 fi
 
 commands=$( IFS=$' '; echo "${!LOCATIONS[@]}")
-echo "$commands"
 complete -W "$commands" goto
