@@ -14,8 +14,11 @@ __goto_list() {
         done | sort -n -k2
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
         __goto_help list
+    elif [[ -v "LOCATIONS[$1]" ]]; then
+        printf "%s\n" "${LOCATIONS[$1]}"
     else
         __goto_error "invalid option $1"
+        GOTO_ERROR_CODE=1
     fi
 }
 
