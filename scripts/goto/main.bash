@@ -82,6 +82,7 @@ __goto_refresh() {
             vars=($line)
             LOCATIONS[${vars[0]}]=${vars[1]}
         done < $GOTO_FILE
+        __update_autocomplete
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
         __goto_help refresh
     else
