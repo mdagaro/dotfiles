@@ -13,7 +13,7 @@ __goto_list() {
             printf "    %-15s %-15s\n" "$k" "${LOCATIONS[$k]}"
         done | sort -n -k2
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
-        __goto_help list
+        __goto_short_help list
     elif [[ -v "LOCATIONS[$1]" ]]; then
         printf "%s\n" "${LOCATIONS[$1]}"
     else
@@ -47,7 +47,7 @@ __goto_add() {
         __goto_error "no alias name provided. See 'goto add --help'"
         GOTO_ERROR_CODE=1
     elif [ $1 == "-h" ] || [ "$1" == "--help" ]; then
-        __goto_help add
+        __goto_short_help add
     else
         LOCATIONS[$1]=$(pwd)
         echo "$1 ${LOCATIONS[$1]}" >> $GOTO_FILE
@@ -61,7 +61,7 @@ __goto_delete() {
         __goto_error "no alias name provided. See 'goto delete --help'"
         GOTO_ERROR_CODE=1
     elif [ $1 == "--help" ] || [ $1 == "-h" ]; then
-        __goto_help delete
+        __goto_short_help delete
     elif [[ -v "LOCATIONS[$1]" ]]; then
         local OLD_LOC=LOCATIONS[$1]
         unset LOCATIONS[$1]
@@ -87,8 +87,35 @@ __goto_refresh() {
         done < $GOTO_FILE
         __update_autocomplete
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
-        __goto_help refresh
+        __goto_short_help refresh
     else
         __goto_error "invalid option '$1'"
+    fi
+}
+
+__goto_help() {
+    if [ -z $1 ]; then
+        __goto_error "no command specified"
+    else
+        case $1 in
+            add)
+                man goto-add
+                ;;
+            delete)
+                man goto-delete
+                ;;
+            list)
+                man goto-list
+                ;;
+            refresh)
+                man goto-refresh
+                ;;
+            help)
+                man goto-help
+                ;;
+            *)
+                __goto_error "invalid command '$1'"
+
+        esac
     fi
 }

@@ -52,7 +52,7 @@ __goto_print_refresh_help() {
     __goto_print_command "-h, --help" "display this help message"
 }
 
-__goto_help() {
+__goto_short_help() {
     case $1 in
         add)
             __goto_print_add_help

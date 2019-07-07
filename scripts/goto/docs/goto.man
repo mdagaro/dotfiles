@@ -1,0 +1,52 @@
+= goto(1)
+:doctype: manpage
+:manmanual: GOTO
+:mansource: GOTO
+:email: md52@rice.edu
+
+== NAME
+
+goto - Alias directories
+
+== SYNOPSIS
+[verse]
+*goto* <alias>
+*goto* <command> [...]
+
+== DESCRIPTION
+
+*goto* is a handy shell script to quickly switch between directories through
+aliases. There are two main ways to use it. The first is to simply use the alias
+argument. This changes the current working directory to whatever is stored by
+<alias>. The other is to invoke a command.
+
+== COMMANDS
+
+include::cmd-list.man[]
+
+== OPTIONS
+
+*-h*::
+*--help*::
+    Prints this help message.
+
+== FILES
+
+*~/scripts/.aliases*::
+    Saves the aliases and their directory mappings.
+
+== DIAGNOSTICS
+
+The following diagnostics may be issued on stderr:
+
+invalid command::
+    The commands is not a valid alias or a *goto* command.
+
+== AUTHOR
+Mateo D'Agaro {email}
+
+== SEE ALSO
+*goto-add*(1)
+*goto-delete*(1)
+*goto-list*(1)
+*goto-refresh*(1)
