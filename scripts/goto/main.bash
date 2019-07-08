@@ -107,7 +107,7 @@ __goto_refresh() {
 
 __goto_help() {
     if [ -z $1 ]; then
-        __goto_error "no command specified"
+        man goto
     else
         case $1 in
             add)
