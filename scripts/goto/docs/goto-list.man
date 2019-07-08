@@ -9,7 +9,7 @@ goto-list - List existing aliases
 
 == SYNOPSIS
 
-*goto* list
+*goto* list [-n | -p]
 
 == DESCRIPTION
 List the current alias sorted alphabetically along with their associated working directory.
@@ -17,7 +17,13 @@ List the current alias sorted alphabetically along with their associated working
 == OPTIONS
 *-h*::
 *--help*::
-    Prints this help message.
+    Prints usage and basic options.
+
+*-n*::
+    Sort output by alias name.
+
+*-p*::
+    Sort output by path.
 
 == FILES
 *~/scripts/.aliases*::
@@ -28,7 +34,4 @@ List the current alias sorted alphabetically along with their associated working
 Mateo D'Agaro {email}
 
 == SEE ALSO
-*goto*(1),
-*goto-add*(1),
-*goto-delete*(1),
-*goto-refresh*(1).
+*goto*(1)

@@ -38,9 +38,11 @@ __goto_print_delete_help() {
 }
 
 __goto_print_list_help() {
-    echo "usage: goto list [--help]"
+    echo "usage: goto list [-h | --help] [-n | -p]"
     echo ""
     __goto_print_command "-h, --help" "display this help message"
+    __goto_print_command "-n" "sort by alias"
+    __goto_print_command "-p" "sort by path"
 }
 
 __goto_print_refresh_help() {

@@ -7,11 +7,23 @@ __goto_error() {
 }
 
 __goto_list() {
-    if [ -z $1 ]; then
+    if [ -z $1 ] || [ $1 == "-n" ]; then
         # Print out the aliases sorted by name
         for k in "${!LOCATIONS[@]}"; do
             printf "    %-15s %-15s\n" "$k" "${LOCATIONS[$k]}"
         done | sort -n -k2
+    elif [ $1 == "-p" ]; then
+        # Print out the aliases sorted by path
+        KEYS=$(
+        for KEY in ${!LOCATIONS[@]}; do
+            echo "${LOCATIONS[$KEY]}:::$KEY"
+        done | sort | awk -F::: '{print $2}'
+        )
+        for k in $KEYS; do
+            printf "    %-15s %-15s\n" "$k" "${LOCATIONS[$k]}"
+        done
+        unset KEYS
+        unset KEY
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
         __goto_short_help list
     elif [[ -v "LOCATIONS[$1]" ]]; then
