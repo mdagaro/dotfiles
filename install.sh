@@ -19,3 +19,7 @@ echo "Dotfiles installed"
 
 cp -r scripts $HOME
 echo "Copied scripts"
+
+cd scripts/goto
+make install
+echo "Installed goto manpages"

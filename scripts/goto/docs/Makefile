@@ -21,7 +21,7 @@ install: $(DOCS)
 	sudo mandb
 
 
-.PHONY: all clean install
+.PHONY: all clean install update
 
 clean:
 	rm -f *.1
