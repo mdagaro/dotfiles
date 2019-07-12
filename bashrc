@@ -6,7 +6,7 @@ fi
 # Locale settings
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/scripts
 
 # Turn off the stupid beeping
 set bell-style none
