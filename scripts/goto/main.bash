@@ -75,7 +75,7 @@ __goto_delete() {
     elif [ $1 == "--help" ] || [ $1 == "-h" ]; then
         __goto_short_help delete
     elif [[ -v "LOCATIONS[$1]" ]]; then
-        local OLD_LOC=LOCATIONS[$1]
+        local OLD_LOC="${LOCATIONS[$1]}"
         unset LOCATIONS[$1]
         __goto_update
         __update_autocomplete
