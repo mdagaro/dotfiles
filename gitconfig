@@ -26,6 +26,7 @@
     g = grep --break --heading --line-number
     staged = diff --minimal --staged
     sub = submodule update --init --recursive
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 [push]
     default = simple
