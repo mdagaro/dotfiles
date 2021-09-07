@@ -9,6 +9,7 @@ all: $(DOCS)
 
 # Install the man files in /usr/local/share/man/...
 update: $(DOCS)
+	sudo mkdir "/usr/local/share/man/man1"
 	for file in $(DOCS1); do \
 		sudo cp "./$$file" /usr/local/share/man/man1/; \
 	done
