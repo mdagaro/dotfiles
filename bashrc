@@ -64,51 +64,6 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
   c_bold=`tput bold`
 fi
 
-# (f)ind by (n)ame
-# usage: fn foo
-# to find all files/directories containing 'foo' in the name
-function fn() {
-	if [ $# -eq 2 ]; then
-		sudo find $1 -name $2
-	elif [ $# -eq 1 ]; then
-		find `pwd` -name $1
-    else
-        echo "(f)ind by (n)ame"
-        echo "usage: fn [name]"
-        echo "Where name is the file name to search for"
-	fi
-}
-
-# (f)ind (d)irectory
-# usage: fd foo
-# to find all directories containing 'foo' in the name
-function fd() {
-	if [ $# -eq 2 ]; then
-		sudo find $1 -type d -name $2
-	elif [ $# -eq 1 ]; then
-		find `pwd` -type d -name $1
-    else
-        echo "(f)ind (d)irectory"
-        echo "usage: fd [name]"
-        echo "Where name is the directory name to search for"
-	fi
-}
-
-# (f)ind (f)ile
-# usage: ff foo
-# to find all files containing 'foo' in the name
-function ff() {
-	if [ $# -eq 2 ]; then
-		sudo find $1 -type f -name $2
-	elif [ $# -eq 1 ]; then
-		find `pwd` -type f -name $1
-    else
-        echo "(f)ind (f)ile"
-        echo "usage: ff [name]"
-        echo "Where name is the file name to search for"
-	fi
-}
-
 # Show the branch if in git directory and choose correct color
 git_prompt() {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -138,27 +93,3 @@ PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚ \[$c_user\]\
 if [ -f $HOME/scripts/goto_complete.bash ]; then
     . $HOME/scripts/goto_complete.bash
 fi
-
-# Go up 'n' directories
-up() {
-    local i=$1
-    case i in
-        ''|*[!0-9]*)
-            # Integer
-            if [ -z $1 ]; then
-                cd ..
-            else
-                while [ $i -gt 0 ]; do
-                    cd ..
-                    i=$(($i - 1))
-                done
-            fi
-            ;;
-        --help)
-            echo "usage: up [n]"
-            echo "Go up 'n' directories. If 'n' is not provided go up a single directory."
-            ;;
-        *)
-            echo bad
-    esac
-}
