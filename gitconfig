@@ -32,7 +32,7 @@
     default = simple
 
 [core]
-    editor = vim
+    editor = nvim
 
 [branch]
     autosetuprebase = always
