@@ -94,3 +94,13 @@ PS1="\n╔ \[$c_path\]\w\[$c_reset\]\$(git_prompt)\[$c_reset\]\n╚ \[$c_user\]\
 if [ -f $HOME/scripts/goto_complete.bash ]; then
     . $HOME/scripts/goto_complete.bash
 fi
+
+function pbcopy() {
+    if [ $# -ge 1 ]; then
+        input="$1"
+        str=$(printf "%s" "$input" | base64)
+    else
+        str=$(cat - | base64)
+    fi
+    printf "\033]52;c;%s\a" "$str"
+}
