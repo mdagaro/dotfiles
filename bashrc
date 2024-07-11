@@ -97,7 +97,7 @@ fi
 
 function pbcopy() {
     if [ $# -ge 1 ]; then
-        input="$1"
+        input="$*"
         str=$(printf "%s" "$input" | base64)
     else
         str=$(cat - | base64)
