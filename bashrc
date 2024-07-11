@@ -7,6 +7,7 @@ fi
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=$PATH:~/.local/bin:~/scripts
+export PATH=$PATH:${HOME}/.cargo/bin
 
 # Turn off the stupid beeping
 set bell-style none
