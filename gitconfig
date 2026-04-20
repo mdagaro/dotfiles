@@ -27,6 +27,10 @@
     staged = diff --minimal --staged
     sub = submodule update --init --recursive
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    rba = rebase --abort
 
 [push]
     default = simple
@@ -38,7 +42,7 @@
     autosetuprebase = always
 
 [pull]
-	rebase = preserve
+	rebase = merges
 
 [log]
 	date = local
@@ -49,3 +53,9 @@
 	autosetuprebase = always
 [grep]
 	lineNumber = true
+[submodule]
+	recurse = true
+[url "git@github.com:"]
+	insteadOf = https://github.com
+[init]
+	defaultBranch = main
