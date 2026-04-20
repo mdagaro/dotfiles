@@ -7,6 +7,7 @@ fi
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=$PATH:~/.local/bin:~/scripts
+export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=$PATH:${HOME}/.cargo/bin
 
 # Turn off the stupid beeping
@@ -15,6 +16,9 @@ set bell-style none
 # Show the list of commands if ambiguous anyways
 set show-all-if-ambiguous on
 
+set -o vi
+
+stty -ixon
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -28,12 +32,10 @@ fi
 
 # Handy aliases
 alias h='history | grep -E'
-alias :wq='exit'
-alias :q='exit'
 alias la='ls -A'
 alias ll='la -l'
 alias l.='ls -d .*'
-alias bashrc=". .bashrc" # Refresh bashrc
+alias bashrc=". $HOME/.bashrc" # Refresh bashrc
 
 # tvim = tmux vim 
 alias tvim="vim --servername tmuxEditor --remote"
@@ -104,3 +106,14 @@ function pbcopy() {
     fi
     printf "\033]52;c;%s\a" "$str"
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+. <(asdf completion bash)
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
